@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DENISIA PROJECTS | GRID LAUNCHER</title>
+    <style>
+        :root { --p: #00f2ff; --bg: #000; --card: #0d0d0d; --border: #222; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-user-select: none; user-select: none; }
+        
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: var(--bg); 
+            color: #fff; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            padding-bottom: 50px;
+        }
+
+        /* НЕОНОВЫЕ ЛИНИИ */
+        .line-t, .line-b { 
+            position: fixed; left: 0; width: 100%; height: 3px; 
+            background: var(--p); z-index: 1000; box-shadow: 0 0 15px var(--p); 
+        }
+        .line-t { top: 0; } .line-b { bottom: 0; }
+
+        /* ЛОГОТИП */
+        .header { text-align: center; margin: 40px 0; }
+        .main-logo { 
+            width: 250px; border-radius: 25px; 
+            filter: drop-shadow(0 0 15px var(--p)); transition: 0.4s;
+        }
+        .main-logo:hover { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--p)); }
+
+        /* СЕТКА КАРТОЧЕК */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 15px; width: 100%; max-width: 1200px; padding: 0 15px;
+        }
+
+        .card { 
+            background: var(--card); border: 1px solid var(--border); 
+            border-radius: 15px; overflow: hidden; text-decoration: none; 
+            color: #fff; transition: 0.3s; display: flex; flex-direction: column;
+        }
+        .card:hover { border-color: var(--p); transform: scale(1.02); }
+
+        .media { width: 100%; aspect-ratio: 1/1; background: #111; overflow: hidden; }
+        .media img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .card:hover .media img { transform: scale(1.1); }
+
+        .info { padding: 12px; border-top: 1px solid var(--border); }
+        .title { font-size: 14px; font-weight: bold; display: block; margin-bottom: 4px; }
+        .author { font-size: 10px; color: var(--p); text-transform: uppercase; font-weight: 800; }
+    </style>
+</head>
+<body>
+
+<div class="line-t"></div>
+<div class="line-b"></div>
+
+<div class="header">
+    <img src="1000012326.jpg" alt="DENISIA" class="main-logo">
+</div>
+
+<div class="grid">
+    <a href="https://denis19sl02-sketch.github.io/Funny-Balls-/" class="card">
+        <div class="media"><img src="https://denis19sl02-sketch.github.io/Funny-Balls-/Funny-Balls-cover.png"></div>
+        <div class="info"><span class="title">Funny Balls</span><span class="author">Denisia Studio</span></div>
+    </a>
+
+    <a href="https://denis19sl02-sketch.github.io/Aliens-/" class="card">
+        <div class="media"><img src="ССЫЛКА_НА_КАРТИНКУ_ALIENS"></div>
+        <div class="info"><span class="title">Aliens Attack</span><span class="author">Denisia Studio</span></div>
+    </a>
+
+    <a href="https://denis19sl02-sketch.github.io/Saving-The-Titanic/" class="card">
+        <div class="media"><img src="ССЫЛКА_НА_КАРТИНКУ_TITANIC"></div>
+        <div class="info"><span class="title">Saving Titanic</span><span class="author">Denisia Studio</span></div>
+    </a>
+
+    <a href="https://denis19sl02-sketch.github.io/Racing-Horses-/" class="card">
+        <div class="media"><img src="ССЫЛКА_НА_КАРТИНКУ_HORSES"></div>
+        <div class="info"><span class="title">Racing Horses</span><span class="author">Denisia Studio</span></div>
+    </a>
+
+    <a href="https://denis19sl02-sketch.github.io/Zombie-In-Forest-/" class="card">
+        <div class="media"><img src="ССЫЛКА_НА_КАРТИНКУ_WOODS"></div>
+        <div class="info"><span class="title">Dark Woods</span><span class="author">Denisia Studio</span></div>
+    </a>
+
+    <a href="https://denis19sl02-sketch.github.io/DENISIAGRAM-/" class="card">
+        <div class="media"><img src="ССЫЛКА_НА_КАРТИНКУ_DENISIAGRAM"></div>
+        <div class="info"><span class="title">DENISIAGRAM</span><span class="author">Denisia Social</span></div>
+    </a>
+</div>
+
+<script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+</script>
+
+</body>
+</html>
