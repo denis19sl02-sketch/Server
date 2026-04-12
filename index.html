@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>DENISIA Auto-Sync</title>
+    <style>
+        body { background: #000; color: #00ffff; font-family: monospace; text-align: center; padding-top: 50px; }
+        .status-box { border: 1px solid #00ffff; display: inline-block; padding: 20px; box-shadow: 0 0 10px #00ffff; }
+        #log { color: #00ff00; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="status-box">
+    <h2>AUTO DATA SENDER</h2>
+    <div id="log">Инициализация...</div>
+</div>
+
+<script>
+    const BIN_ID = '69dae8c3aaba882197ec1b86';
+    const MASTER_KEY = '$2a$10$NF86QybyNthy/LwCg9j8p.lqxDs96wRGqd.1MA95FZv3xLrU8HlYa';
+    const URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+    async function sendAutoData() {
+        const log = document.getElementById('log');
+        
+        // СОБИРАЕМ ДАННЫЕ «ИЗ ВОЗДУХА»
+        const autoData = {
+            last_online: new Date().toLocaleString(),
+            user_agent: navigator.userAgent,
+            screen_res: `${window.screen.width}x${window.screen.height}`,
+            session_id: Math.floor(Math.random() * 1000000)
+        };
+
+        log.innerText = "Сбор данных и отправка...";
+
+        try {
+            const res = await fetch(URL, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Master-Key': MASTER_KEY
+                },
+                body: JSON.stringify(autoData)
+            });
+
+            if (res.ok) {
+                log.innerText = "ДАННЫЕ ОТПРАВЛЕНЫ АВТОМАТИЧЕСКИ";
+                console.log("Sent:", autoData);
+            } else {
+                log.innerText = "ОШИБКА СЕРВЕРА";
+            }
+        } catch (e) {
+            log.innerText = "СЕТЕВАЯ ОШИБКА";
+        }
+    }
+
+    // Запуск через 2 секунды после открытия сайта
+    setTimeout(sendAutoData, 2000);
+</script>
+
+</body>
+</html>
