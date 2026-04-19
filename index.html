@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>DENISIA | UNBLOCKED SERVER READER</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 20% 30%, #0a0a1a, #000000);
+            font-family: 'Courier New', 'Fira Code', monospace;
+            min-height: 100vh;
+            padding: 20px;
+            color: #00f2ff;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px 20px;
+            border-bottom: 3px solid #ff00c8;
+            margin-bottom: 35px;
+            animation: borderPulse 2s infinite;
+        }
+
+        h1 {
+            font-size: 4rem;
+            letter-spacing: 10px;
+            background: linear-gradient(135deg, #00f2ff, #ff00c8, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(0,242,255,0.5);
+        }
+
+        .sub {
+            font-size: 0.9rem;
+            color: #88aaff;
+            margin-top: 12px;
+        }
+
+        .panel {
+            background: rgba(5, 5, 20, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid #00f2ff;
+            border-radius: 30px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 45px rgba(0,242,255,0.2);
+        }
+
+        .key-container {
+            background: #000000aa;
+            border-radius: 20px;
+            padding: 18px;
+            margin-bottom: 25px;
+            border-left: 6px solid #ff00c8;
+            word-break: break-all;
+        }
+
+        .key-label {
+            color: #ff88cc;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .key-value {
+            color: #0ff;
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 25px 0 20px;
+        }
+
+        .btn {
+            background: transparent;
+            border: 2px solid #00f2ff;
+            color: #00f2ff;
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: monospace;
+        }
+
+        .btn:hover {
+            background: #00f2ff;
+            color: #000;
+            box-shadow: 0 0 25px #00f2ff;
+            transform: scale(1.02);
+        }
+
+        .btn-pink {
+            border-color: #ff00c8;
+            color: #ff00c8;
+        }
+
+        .btn-pink:hover {
+            background: #ff00c8;
+            color: #000;
+            box-shadow: 0 0 25px #ff00c8;
+        }
+
+        .status-bar {
+            background: #0a0a1a;
+            border-radius: 20px;
+            padding: 14px 22px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid #2a2a4a;
+        }
+
+        .led {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #0ff;
+            box-shadow: 0 0 8px #0ff;
+            animation: blink 1s infinite;
+        }
+
+        .status-text {
+            font-weight: bold;
+        }
+
+        .result-box {
+            background: #010104dd;
+            border: 2px solid #ff00c8;
+            border-radius: 28px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .result-header {
+            background: #ff00c822;
+            padding: 16px 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #ff00c8;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .json-area {
+            padding: 22px;
+            overflow-x: auto;
+            max-height: 65vh;
+            background: #000000aa;
+        }
+
+        pre {
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #bbffdd;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: rgba(0, 30, 50, 0.7);
+            border-radius: 18px;
+            padding: 14px;
+            border-left: 3px solid #0ff;
+        }
+
+        @keyframes borderPulse {
+            0%, 100% { border-color: #ff00c8; }
+            50% { border-color: #00f2ff; }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0ff;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="header">
+        <h1>DENISIA UNBLOCKED</h1>
+        <div class="sub">⚡ ЧТЕНИЕ СЕРВЕРА — БЕЗ БЛОКИРОВОК ⚡</div>
+    </div>
+
+    <div class="panel">
+        <div class="key-container">
+            <div class="key-label">🔐 ACCESS KEY (X-Master-Key):</div>
+            <div class="key-value" id="keyDisplay">$2a$10$HzaKx.Xgu8IShmmJkhauHOX6XNxZ0zRhu4y1puXYg/IadljRJ.TWW</div>
+        </div>
+        <div class="buttons">
+            <button class="btn" id="readBtn">📡 ПРОЧИТАТЬ СЕРВЕР</button>
+            <button class="btn btn-pink" id="clearBtn">🗑 ОЧИСТИТЬ</button>
+            <button class="btn" id="copyBtn">📋 КОПИРОВАТЬ KEY</button>
+        </div>
+        <div class="info-grid">
+            <div class="info-card">🎯 СЕРВЕР: <strong>69d93b01aaba882197e5b5c1</strong></div>
+            <div class="info-card">🔓 МЕТОД: GET + X-Master-Key</div>
+            <div class="info-card">🛡️ ОБХОД БЛОКИРОВОК: mode: 'cors', credentials: 'omit'</div>
+        </div>
+    </div>
+
+    <div class="status-bar">
+        <div class="led"></div>
+        <div class="status-text" id="statusMsg">⚙️ ГОТОВ. НАЖМИ "ПРОЧИТАТЬ СЕРВЕР"</div>
+    </div>
+
+    <div class="result-box" id="resultBox" style="display: none;">
+        <div class="result-header">
+            <span>📦 ДАННЫЕ С СЕРВЕРА (FULL RESPONSE)</span>
+            <span style="font-size: 11px;">ACCESS KEY активирован</span>
+        </div>
+        <div class="json-area">
+            <pre id="jsonContent">Загрузка...</pre>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ==============================================
+        // КОНФИГУРАЦИЯ - ТОЛЬКО ACCESS KEY И ID
+        // ==============================================
+        const BIN_ID = '69e514beaaba882197170ec1';
+        const ACCESS_KEY = '$2a$10$HzaKx.Xgu8IShmmJkhauHOX6XNxZ0zRhu4y1puXYg/IadljRJ.TWW';
+        const SERVER_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+        
+        // DOM элементы
+        const readBtn = document.getElementById('readBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const statusSpan = document.getElementById('statusMsg');
+        const resultBox = document.getElementById('resultBox');
+        const jsonPre = document.getElementById('jsonContent');
+        const keyDisplay = document.getElementById('keyDisplay');
+        
+        // Показываем ключ
+        keyDisplay.textContent = ACCESS_KEY;
+        
+        function setStatus(msg, isError = false) {
+            statusSpan.innerHTML = msg;
+            statusSpan.style.color = isError ? '#ff6680' : '#0ff';
+        }
+        
+        // Функция с обходом блокировок браузера
+        async function readServerWithAccessKey() {
+            setStatus('🔄 ОТПРАВКА ЗАПРОСА К JSONBin.IO (режим обхода блокировок)...', false);
+            resultBox.style.display = 'none';
+            
+            try {
+                // Используем fetch с настройками, которые помогают избежать блокировок
+                const response = await fetch(SERVER_URL, {
+                    method: 'GET',
+                    mode: 'cors',           // Явно указываем CORS
+                    cache: 'no-cache',       // Отключаем кэш
+                    credentials: 'omit',     // Не отправляем куки (избегаем проблем)
+                    headers: {
+                        'X-Master-Key': ACCESS_KEY,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (!response.ok) {
+                    let errorDetail = `HTTP ${response.status}`;
+                    if (response.status === 401) errorDetail = '401 Unauthorized — ACCESS KEY недействителен';
+                    if (response.status === 403) errorDetail = '403 Forbidden — доступ запрещён';
+                    if (response.status === 404) errorDetail = '404 Not Found — бин не существует';
+                    throw new Error(`${errorDetail}`);
+                }
+                
+                const data = await response.json();
+                setStatus('✅ СЕРВЕР УСПЕШНО ПРОЧИТАН! ACCESS KEY действителен. Браузер не заблокировал запрос.', false);
+                
+                // Формируем полный вывод
+                const output = {
+                    status: "connected",
+                    binId: BIN_ID,
+                    accessKeyUsed: ACCESS_KEY.substring(0, 30) + '...',
+                    record: data.record,
+                    metadata: data.metadata,
+                    timestamp: new Date().toISOString(),
+                    note: "Запрос выполнен с обходом блокировок (CORS, no-cache, omit credentials)"
+                };
+                
+                jsonPre.textContent = JSON.stringify(output, null, 2);
+                resultBox.style.display = 'block';
+                
+                // Дополнительно: ищем внутри record мастер-ключ
+                function findKeyInside(obj, depth = 0) {
+                    if (depth > 15) return null;
+                    if (!obj) return null;
+                    if (typeof obj === 'string') {
+                        if (obj.startsWith('$2a$') && obj.length > 20) return obj;
+                        return null;
+                    }
+                    if (Array.isArray(obj)) {
+                        for (let item of obj) {
+                            const found = findKeyInside(item, depth + 1);
+                            if (found) return found;
+                        }
+                        return null;
+                    }
+                    if (typeof obj === 'object') {
+                        for (let key in obj) {
+                            const val = obj[key];
+                            if (typeof val === 'string' && val.startsWith('$2a$') && val.length > 20) return val;
+                            const deep = findKeyInside(val, depth + 1);
+                            if (deep) return deep;
+                        }
+                        return null;
+                    }
+                    return null;
+                }
+                
+                const hiddenKey = findKeyInside(data.record);
+                if (hiddenKey) {
+                    setStatus(`✅ СЕРВЕР ПРОЧИТАН! ВНУТРИ НАЙДЕН КЛЮЧ: ${hiddenKey.substring(0, 35)}...`, false);
+                    const enhanced = { ...output, innerMasterKeyFound: hiddenKey };
+                    jsonPre.textContent = JSON.stringify(enhanced, null, 2);
+                }
+                
+                console.log('[DENISIA] Сервер успешно прочитан через ACCESS KEY');
+                console.log('Данные:', data);
+                
+            } catch (error) {
+                console.error('DENISIA ОШИБКА:', error);
+                
+                // Проверяем тип ошибки и даём понятное сообщение
+                let errorMessage = error.message;
+                if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                    errorMessage = 'NETWORK ERROR — возможно блокировка CORS или нет интернета. Попробуй перезагрузить страницу.';
+                } else if (error.message.includes('401')) {
+                    errorMessage = '401 Unauthorized — ACCESS KEY недействителен. Проверь ключ доступа.';
+                }
+                
+                setStatus(`❌ ОШИБКА: ${errorMessage}`, true);
+                jsonPre.textContent = `НЕ УДАЛОСЬ ПРОЧИТАТЬ СЕРВЕР\n\nДетали: ${error.message}\n\nПроверь:\n• ACCESS KEY: ${ACCESS_KEY.substring(0, 30)}...\n• ID бина: ${BIN_ID}\n• Интернет соединение\n\nСОВЕТ: Если браузер блокирует, попробуй открыть страницу в другом браузере или отключить расширения.`;
+                resultBox.style.display = 'block';
+            }
+        }
+        
+        // Очистка результата
+        function clearResult() {
+            resultBox.style.display = 'none';
+            jsonPre.textContent = '';
+            setStatus('🧹 РЕЗУЛЬТАТ ОЧИЩЕН. Нажми "Прочитать сервер"', false);
+        }
+        
+        // Копировать ключ в буфер
+        function copyAccessKey() {
+            navigator.clipboard.writeText(ACCESS_KEY).then(() => {
+                setStatus('🔑 ACCESS KEY СКОПИРОВАН В БУФЕР!', false);
+                setTimeout(() => {
+                    if (resultBox.style.display === 'none') {
+                        setStatus('⚙️ ГОТОВ. НАЖМИ "ПРОЧИТАТЬ СЕРВЕР"', false);
+                    }
+                }, 1300);
+            }).catch(() => {
+                setStatus('⚠️ НЕ УДАЛОСЬ СКОПИРОВАТЬ КЛЮЧ', true);
+            });
+        }
+        
+        // НАЗНАЧАЕМ СОБЫТИЯ
+        readBtn.addEventListener('click', readServerWithAccessKey);
+        clearBtn.addEventListener('click', clearResult);
+        copyBtn.addEventListener('click', copyAccessKey);
+        
+        // АВТОМАТИЧЕСКИЙ ЗАПУСК
+        setTimeout(() => {
+            readServerWithAccessKey();
+        }, 300);
+        
+        console.log('%c DENISIA: Обход блокировок активирован', 'color: #0ff; font-size: 14px;');
+        console.log(`Access Key: ${ACCESS_KEY.substring(0, 35)}... | Bin: ${BIN_ID}`);
+        console.log('Настройки: mode: cors, credentials: omit, cache: no-cache');
+    })();
+</script>
+</body>
+</html>
